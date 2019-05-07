@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package post;
+
+service Connection {
+    rpc Send (Post) returns (Response);
+}
+
+message Post {
+    string id = 1;
+    string slug = 2;
+    string title = 3;
+    string content = 4;
+    string category = 5;
+    repeated string tags = 6;
+    Timestamp created_date = 7;
+    Timestamp publish_date = 8;
+    Timestamp modified_date = 9;
+    string author_name = 10;
+    string author_title = 11;
+    string author_description = 12;
+    bytes author_thumbnail = 13;
+    bool publish = 14;
+    bool amp = 15;
+    bytes thumbnail = 16;
+}
+
+message Response {
+    int32 status = 1; // ex. 200
+    string err_code = 2;
+    string err_message = 3;
+}
